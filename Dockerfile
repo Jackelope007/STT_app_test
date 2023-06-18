@@ -7,9 +7,12 @@ WORKDIR /app
 # Add the current directory contents into the container at /app
 ADD . /app
 
-# Install FFmpeg
+# Install FFmpeg and wget
 RUN apt-get update && \
-    apt-get install -y ffmpeg
+    apt-get install -y ffmpeg wget
+
+# Download the DeepSpeech model file
+RUN wget https://github.com/mozilla/DeepSpeech/releases/download/v0.9.3/deepspeech-0.9.3-models.pbmm
 
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
