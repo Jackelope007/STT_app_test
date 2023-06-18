@@ -11,8 +11,9 @@ ADD . /app
 RUN apt-get update && \
     apt-get install -y ffmpeg wget
 
-# Download the DeepSpeech model file
+# Download the DeepSpeech model and scorer files
 RUN wget https://github.com/mozilla/DeepSpeech/releases/download/v0.9.3/deepspeech-0.9.3-models.pbmm
+RUN wget https://github.com/mozilla/DeepSpeech/releases/download/v0.9.3/deepspeech-0.9.3-models.scorer
 
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
